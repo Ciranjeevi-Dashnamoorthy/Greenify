@@ -1,2 +1,2 @@
-print("check")
+printeck")
 print("chrcl")
