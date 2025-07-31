@@ -1,30 +1,16 @@
-<<<<<<< HEAD
-import logo from "./logo.svg";
-import "./App.css";
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          dhamu
-        </a>
-      </header>
-=======
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import './App.css'; // Add styles here
+import './App.css';
+import Login from './Login.js';
 
-function App() {
+function LandingPage() {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="landing-container">
       <motion.h1
@@ -61,7 +47,7 @@ function App() {
         transition={{ delay: 1.5, duration: 0.5 }}
       >
         <button className="join-btn">Join the Movement</button>
-        <button className="login-btn">Login / Sign Up</button>
+        <button className="login-btn" onClick={handleLoginClick}>Login / Sign Up</button>
       </motion.div>
 
       <motion.div
@@ -70,10 +56,20 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <p className="evolution">🌱 Seedling → 🌿 Planter → ♻️ Recycler → 🛡️ Guardian → 🌟 EcoLegend</p>
+        <p className="evolution">🌱 Seedling → 🌿 Planter → ♻ Recycler → 🛡 Guardian → 🌟 EcoLegend</p>
       </motion.div>
->>>>>>> 6024234 (landing page)
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
