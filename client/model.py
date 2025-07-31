@@ -1,2 +1,0 @@
-printeck")
-print("chrcl")
