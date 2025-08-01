@@ -1,0 +1,230 @@
+.profile-bg {
+  min-height: 100vh;
+    background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 8px;
+}
+.profile-container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px rgba(46, 125, 50, 0.13);
+  padding: 32px 24px;
+  max-width: 540px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.profile-avatar-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #b2dfdb;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.09);
+}
+.profile-header-info {
+  flex: 1;
+  min-width: 180px;
+}
+.profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 6px;
+}
+.profile-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.profile-rank,
+.profile-points,
+.profile-tasks {
+  background: #eafaf1;
+  color: #388e3c;
+  border-radius: 12px;
+  padding: 4px 14px;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.profile-edit-btn {
+  margin-top: 8px;
+  background: linear-gradient(90deg, #43a047 60%, #388e3c 100%);
+  color: #fff;
+  border: none;
+  padding: 8px 28px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.profile-edit-btn:hover {
+  background: #2e7d32;
+}
+.profile-progress-section {
+  margin-bottom: 8px;
+}
+.profile-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.98rem;
+  color: #388e3c;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.profile-progress-bar-bg {
+  width: 100%;
+  background: #eafaf1;
+  border-radius: 8px;
+  height: 12px;
+  overflow: hidden;
+}
+.profile-progress-bar {
+  background: linear-gradient(90deg, #43a047 60%, #388e3c 100%);
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.4s;
+}
+.profile-progress-text {
+  text-align: right;
+  font-size: 0.92rem;
+  color: #388e3c;
+  margin-top: 2px;
+}
+.profile-section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+.profile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #eafaf1;
+  border-radius: 12px;
+  padding: 10px 18px;
+  min-width: 90px;
+}
+.profile-badge-icon {
+  font-size: 2rem;
+  margin-bottom: 2px;
+}
+.profile-badge-name {
+  color: #388e3c;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+.profile-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile-task-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  background: #eafaf1;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.profile-task-title {
+  font-weight: 700;
+  color: #2e7d32;
+  min-width: 120px;
+}
+.profile-task-desc {
+  color: #4e5d52;
+  font-size: 0.98rem;
+  flex: 1;
+}
+.profile-task-date {
+  color: #388e3c;
+  font-size: 0.92rem;
+  margin-left: auto;
+}
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 16px 4px;
+    gap: 18px;
+  }
+  .profile-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .profile-avatar-img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Add to Profile.css */
+.profile-edit-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44, 101, 62, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.profile-edit-form {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(46, 125, 50, 0.18);
+  padding: 32px 24px;
+  min-width: 280px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+}
+.profile-edit-form h3 {
+  color: #2e7d32;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.profile-edit-form label {
+  color: #388e3c;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.profile-edit-form input[type="text"] {
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  padding: 8px;
+  background: #eafaf1;
+  font-size: 1rem;
+}
+.profile-edit-form input[type="file"] {
+  margin-top: 4px;
+}
+.profile-edit-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}

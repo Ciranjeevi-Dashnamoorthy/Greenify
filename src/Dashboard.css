@@ -1,0 +1,506 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #eafaf1;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.sidebar {
+  width: 70px;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(46,125,50,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.sidebar-logo {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #43a047;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li {
+  font-size: 1.5em;
+  margin: 24px 0;
+  cursor: pointer;
+  color: #43a047;
+  transition: color 0.2s;
+}
+
+.sidebar nav ul li:hover {
+  color: #2e7d32;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 32px 40px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.user-name {
+  color: #388e3c;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #43a047;
+}
+
+.task-cards {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.task-card {
+  flex: 1;
+  padding: 24px;
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(46,125,50,0.09);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #43a047;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.task-card.completed {
+  background: #b2dfdb;
+  color: #388e3c;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task-card:hover {
+  background: #388e3c;
+  transform: translateY(-4px) scale(1.03);
+}
+
+.card-meta {
+  margin-top: 16px;
+  font-size: 1.5em;
+}
+
+.recent-tasks {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(46,125,50,0.07);
+}
+
+.tasks-list {
+  margin-top: 16px;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.task-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 12px;
+  background: #43a047;
+}
+
+.task-title {
+  font-weight: bold;
+  margin-right: 12px;
+  color: #388e3c;
+}
+
+.task-desc {
+  color: #888;
+  font-size: 0.95em;
+}
+
+.rightbar {
+  width: 320px;
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(46,125,50,0.07);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.upcoming-schedule h4,
+.new-task h4 {
+  margin-bottom: 16px;
+  color: #388e3c;
+}
+
+.schedule-card {
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #43a047;
+}
+
+.new-task input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #b2dfdb;
+  margin-bottom: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tags span {
+  background: #eafaf1;
+  color: #388e3c;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 0.95em;
+  border: 1px solid #b2dfdb;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tags span:hover {
+  background: #b2dfdb;
+}
+
+.create-task-btn {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+
+.create-task-btn:hover {
+  background: #388e3c;
+}
+/* Add to Dashboard.css */
+.sidebar-logo-img {
+  width: 48px;
+  height: auto;
+  display: block;
+  margin: 0 auto 24px auto;
+}
+
+.task-details-container {
+  background: #f6fff4;
+  padding: 32px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 40px auto;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.1);
+  text-align: center;
+}
+
+.task-title {
+  color: #388e3c;
+  font-size: 2em;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.task-image {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.07);
+}
+
+.task-desc {
+  color: #388e3c;
+  font-size: 1.1em;
+  margin-bottom: 24px;
+}
+
+.upload-section {
+  margin-top: 18px;
+  text-align: left;
+}
+
+.upload-section label {
+  color: #388e3c;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.upload-section input[type="file"] {
+  margin-top: 8px;
+}
+
+.file-name {
+  color: #388e3c;
+  margin-top: 10px;
+  font-size: 0.98em;
+}
+.recent-tasks {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(46, 125, 50, 0.07);
+  padding: 32px 28px 24px 28px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.recent-tasks h3 {
+  font-size: 1.18rem; /* Increased from 1.05rem */
+  font-weight: 700;
+  color: #1b5e20;
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 0 0 0;
+}
+
+.task-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem; /* Slightly larger */
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eafaf1;
+  color: #2e7d32;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.task-title {
+  font-size: 1rem; /* Increased from 1.05rem/1.45rem for better balance */
+  font-weight: 500;
+  color: #388e3c;
+  margin-right: 10px;
+  min-width: 160px;
+  white-space: nowrap;
+}
+
+.task-desc {
+  font-size: 1.08rem; /* Increased from 1.05rem */
+  color: #4e5d52;
+  font-weight: 400;
+  margin-left: 8px;
+  flex: 1;
+  white-space: normal;
+}
+/* Add to Dashboard.css */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.task-row {
+  background: #eafaf1;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.07);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1rem;
+  flex-wrap: wrap;
+}
+
+.task-num {
+  font-weight: bold;
+  color: #43a047;
+  background: #c8e6c9;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.task-title {
+  font-size: 1rem; /* Smaller font size */
+  font-weight: 600;
+  color: #2e7d32;
+  min-width: 120px;
+}
+
+.task-desc {
+  font-size: 0.95rem; /* Smaller font size */
+  color: #388e3c;
+  flex: 1;
+}
+
+.task-status.done {
+  font-size: 1rem; /* Smaller font size */
+  color: #43a047;
+  font-weight: bold;
+  margin-left: auto;
+}
+/* Add this to your Dashboard.css for pop-up hover effect on all dashboard buttons/cards */
+
+/* Sidebar icons */
+.sidebar nav ul li:hover {
+  background: #388e3c;
+  color: #fff;
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.13);
+}
+
+/* Task cards */
+.task-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.task-card:hover {
+  box-shadow: 0 8px 24px rgba(46, 125, 50, 0.18);
+  transform: translateY(-4px) scale(1.04);
+}
+
+/* Recent tasks rows */
+.task-row {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.task-row:hover {
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.14);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Rightbar buttons */
+.create-task-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+.create-task-btn:hover {
+  background: #2e7d32;
+  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.13);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.eco-event-page {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(46, 125, 50, 0.07);
+  padding: 40px 28px;
+  max-width: 500px;
+  margin: 48px auto;
+  text-align: center;
+}
+
+.eco-event-page h2 {
+  color: #2e7d32;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+}
+
+.eco-event-page .event-desc {
+  color: #388e3c;
+  font-size: 1.08rem;
+  margin-bottom: 24px;
+}
+
+.event-success {
+  background: #eafaf1;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(46, 125, 50, 0.07);
+  padding: 40px 28px;
+  max-width: 500px;
+  margin: 48px auto;
+  text-align: center;
+}
+
+.event-success h2 {
+  color: #43a047;
+  margin-bottom: 16px;
+}
+
+.previous-campaigns-box {
+  background: #eafaf1;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(46, 125, 50, 0.07);
+  padding: 24px 18px;
+  margin-top: 32px;
+  text-align: left;
+}
+
+.previous-campaigns-box h3 {
+  color: #2e7d32;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+}
+
+.campaign-item {
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c8e6c9;
+}
+
+.campaign-item:last-child {
+  border-bottom: none;
+}
+
+.campaign-date {
+  color: #388e3c;
+  font-size: 0.95rem;
+  margin-left: 6px;
+}
+
+.campaign-summary {
+  color: #4e5d52;
+  font-size: 0.98rem;
+  margin-top: 14px;
+}
+
+
+

@@ -1,0 +1,239 @@
+.landing-container {
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 50px 20px;
+  background: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 4rem;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #388e3c;
+  margin-top: 10px;
+}
+
+.overview {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 30px auto;
+  color: #4e5d52;
+}
+
+.cta-buttons {
+  margin-top: 30px;
+}
+
+.join-btn,
+.login-btn {
+  padding: 12px 24px;
+  margin: 0 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn {
+  background-color: #43a047;
+  color: white;
+}
+
+.join-btn:hover {
+  background-color: #2e7d32;
+}
+
+.login-btn {
+  background-color: white;
+  color: #43a047;
+  border: 2px solid #43a047;
+}
+
+.login-btn:hover {
+  background-color: #e8f5e9;
+}
+
+.avatar-progress {
+  margin-top: 50px;
+  font-size: 1rem;
+  color: #388e3c;
+  font-weight: bold;
+}
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(34, 139, 34, 0.25); /* semi-transparent green overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-popup > div {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(34, 139, 34, 0.15);
+  min-width: 320px;
+  position: relative;
+}
+
+.close-login {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.close-login:hover {
+  background: #2e7d32;
+}
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.35;
+  background: #eafaf1;
+}
+/* Eco Initiatives, Features, Impact Sections */
+.landing-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  padding: 32px 0 0 0;
+}
+
+.landing-section h3 {
+  font-size: 1.35rem;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.landing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.landing-card {
+  background: #eafaf1;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(46, 125, 50, 0.07);
+  padding: 28px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.landing-card:hover {
+  box-shadow: 0 4px 24px rgba(46, 125, 50, 0.13);
+}
+
+.landing-card span {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.landing-card .card-title {
+  font-weight: bold;
+  color: #388e3c;
+  margin-bottom: 4px;
+  font-size: 1.08rem;
+}
+
+.landing-card .card-desc {
+  color: #4e5d52;
+  font-size: 0.98rem;
+  text-align: center;
+}
+
+.landing-impact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.impact-card {
+  background: #eafaf1;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(46, 125, 50, 0.07);
+  padding: 24px 32px;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.impact-card .impact-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.impact-card .impact-label {
+  color: #388e3c;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .landing-section {
+    padding: 18px 0 0 0;
+  }
+  .landing-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .landing-impact {
+    gap: 16px;
+  }
+  .impact-card {
+    padding: 16px 8px;
+    min-width: 120px;
+  }
+}
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.25; /* Adjust for readability */
+  pointer-events: none;
+}

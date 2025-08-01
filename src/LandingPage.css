@@ -1,0 +1,56 @@
+.landing-container {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 40px;
+  /* Add max width and center */
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.25;
+  filter: blur(1px) brightness(0.97);
+  pointer-events: none;
+}
+
+.join-btn,
+.login-btn,
+.download-btn {
+  min-width: 180px;
+  font-size: 1.1rem;
+}
+
+.avatar-progress {
+  margin-top: 1.5rem;
+}
+
+.evolution {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .landing-container {
+    padding: 8px;
+  }
+  .title {
+    font-size: 2rem;
+  }
+}
