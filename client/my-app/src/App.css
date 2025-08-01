@@ -1,0 +1,71 @@
+.landing-container {
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(to bottom right, #e6f4ea, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 4rem;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #388e3c;
+  margin-top: 10px;
+}
+
+.overview {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 30px auto;
+  color: #4e5d52;
+}
+
+.cta-buttons {
+  margin-top: 30px;
+}
+
+.join-btn,
+.login-btn {
+  padding: 12px 24px;
+  margin: 0 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn {
+  background-color: #43a047;
+  color: white;
+}
+
+.join-btn:hover {
+  background-color: #2e7d32;
+}
+
+.login-btn {
+  background-color: white;
+  color: #43a047;
+  border: 2px solid #43a047;
+}
+
+.login-btn:hover {
+  background-color: #e8f5e9;
+}
+
+.avatar-progress {
+  margin-top: 50px;
+  font-size: 1rem;
+  color: #388e3c;
+  font-weight: bold;
+}
