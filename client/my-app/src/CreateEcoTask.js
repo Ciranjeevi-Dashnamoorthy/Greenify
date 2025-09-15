@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './CreateEcoTask.css';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { auth, db } from './firebase';
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 
 // Fix marker icon issue for leaflet in React
 import L from 'leaflet';
@@ -30,6 +32,7 @@ function CreateEcoTask() {
   const [location, setLocation] = useState(null);
   const [locError, setLocError] = useState('');
   const [showMap, setShowMap] = useState(false);
+  const [taskTime, setTaskTime] = useState('');
   const navigate = useNavigate();
 
   const handleFileChange = (e) => setFile(e.target.files[0]);
@@ -46,11 +49,31 @@ function CreateEcoTask() {
       () => setLocError("Unable to retrieve your location.")
     );
   };
-  const handleSubmit = (e) => {
+
+  // --- UPDATED HANDLE SUBMIT ---
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setTimeout(() => {
-      navigate('/submitted-successfully');
-    }, 800);
+    if (!file || !location || !taskTime) return;
+
+    const user = auth.currentUser;
+    if (!user) return;
+
+    // For now, we just save the file name as proof (no upload logic)
+    const newTask = {
+      title: "Neighborhood Cleanup Mission",
+      desc: "Joined neighbors to clean up the local area.",
+      location,
+      time: taskTime,
+      proof: file.name,
+      createdAt: new Date().toISOString()
+    };
+
+    const userRef = doc(db, "users", user.uid);
+    await updateDoc(userRef, {
+      upcomingTasks: arrayUnion(newTask)
+    });
+
+    navigate('/dashboard');
   };
 
   return (
@@ -104,6 +127,16 @@ function CreateEcoTask() {
           )}
         </div>
         <div>
+          <label htmlFor="eco-task-time">Task Time</label>
+          <input
+            id="eco-task-time"
+            type="datetime-local"
+            value={taskTime}
+            onChange={e => setTaskTime(e.target.value)}
+            required
+          />
+        </div>
+        <div>
           <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
             <button
               type="button"
@@ -152,12 +185,12 @@ function CreateEcoTask() {
         <button
           type="submit"
           className="eco-task-submit-btn"
-          disabled={!file || !location}
+          disabled={!file || !location || !taskTime}
         >
           Submit Task
         </button>
       </form>
-    </div>
+      </div>
   );
 }
 

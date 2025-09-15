@@ -71,7 +71,7 @@ function LandingPage() {
         transition={{ duration: 1 }}
         className="title"
       >
-        Greenify
+        Civic Audit
       </motion.h1>
 
       <motion.p
@@ -89,7 +89,7 @@ function LandingPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
       >
-        Join Greenify and turn your daily actions into eco-missions. Earn GreenCoins, evolve your avatar, and make a real-world environmental impact.
+        Join Civic Audit and turn your daily actions into eco-missions. Earn GreenCoins, evolve your avatar, and make a real-world environmental impact.
       </motion.p>
 
       <motion.div

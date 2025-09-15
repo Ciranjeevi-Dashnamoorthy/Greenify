@@ -181,3 +181,57 @@
 .success-btn:hover {
   background: #2e7d32;
 }
+
+.eco-success-motion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e8f5e9;
+  border-radius: 18px;
+  padding: 32px 24px;
+  margin: 32px 0 24px 0;
+  box-shadow: 0 4px 24px rgba(67, 160, 71, 0.10);
+  border: 2px solid #43a04733;
+}
+
+.eco-success-emoji {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+.eco-success-title {
+  color: #43a047;
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.eco-success-points {
+  font-size: 1.3rem;
+  margin: 8px 0 4px 0;
+}
+
+.eco-points-badge {
+  background: #43a047;
+  color: #fff;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  display: inline-block;
+  box-shadow: 0 2px 8px #43a04733;
+}
+
+.eco-success-desc {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
+.eco-success-redirect {
+  color: #888;
+  font-size: 0.95rem;
+  margin-top: 12px;
+}

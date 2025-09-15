@@ -1,38 +1,49 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './TaskDetails.css';
-
-const BG_VIDEO_URL = process.env.PUBLIC_URL + '/bg-green.mp4';
 
 function SubmittedSuccessfully() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { points = 0 } = location.state || {};
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/dashboard');
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <div className="task-details-root">
-      <video
-        className="bg-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src={BG_VIDEO_URL} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="task-details-container" style={{ maxWidth: 420 }}>
-  <div className="success-icon">✅</div>
-  <h2 className="success-title">Proof Submitted!</h2>
-  <p className="success-desc">
-    Thank you for making an impact.<br />
-    Your proof has been received successfully.
-  </p>
-  <button
-    className="success-btn"
-    onClick={() => navigate('/dashboard')}
-  >
-    Go to Dashboard
-  </button>
-</div>
+      <div className="task-details-container">
+        <motion.div
+          className="eco-success-motion"
+          initial={{ opacity: 0, scale: 0.8, y: 40 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 40 }}
+          transition={{ duration: 0.7, type: "spring" }}
+        >
+          <span className="eco-success-emoji">🎉</span>
+          <h3 className="eco-success-title">Success!</h3>
+          <p className="eco-success-points">
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1.2 }}
+              transition={{ delay: 0.3, type: "spring" }}
+              className="eco-points-badge"
+            >
+              +{points} Eco Points
+            </motion.span>
+          </p>
+          <p className="eco-success-desc">
+            You just made a positive impact!<br />
+            <span style={{ color: "#43a047" }}>Nature is Healing</span>
+          </p>
+          <p className="eco-success-redirect">Redirecting to dashboard...</p>
+        </motion.div>
+      </div>
     </div>
   );
 }

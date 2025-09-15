@@ -228,3 +228,95 @@
   justify-content: center;
   margin-top: 8px;
 }
+.profile-world-progress-section {
+  margin: 32px 0 24px 0;
+  text-align: center;
+}
+.world-progress-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.world-img-stack {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  margin: 0 auto;
+}
+.world-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #43a04722;
+}
+.world-img-grey {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.world-img-color-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  transition: width 1s cubic-bezier(.4,2,.6,1);
+}
+.world-img-color {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+.world-progress-label {
+  margin-top: 12px;
+  font-size: 1.1rem;
+}
+.profile-world-progress-section {
+  margin: 32px 0 24px 0;
+  text-align: center;
+}
+.world-progress-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.world-img-circle-stack {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 18px auto;
+}
+.world-img-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 12px #43a04722;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.world-img-grey {
+  z-index: 1;
+}
+.world-img-circle-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 180px;
+  width: 180px;
+  overflow: hidden;
+  z-index: 2;
+  transition: clip-path 1s cubic-bezier(.4,2,.6,1);
+}
+.world-img-color {
+  z-index: 2;
+}
+.world-progress-label {
+  margin-top: 18px;
+  font-size: 1.1rem;
+}

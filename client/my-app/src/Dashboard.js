@@ -1,27 +1,57 @@
-//import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import { useNavigate } from 'react-router-dom';
-
+import { auth, db } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { onSnapshot } from "firebase/firestore";
 
 function Dashboard() {
-// const [completed, setCompleted] = useState({ 1: false, 2: false, 3: false });
-
+  const [userName, setUserName] = useState('');
+  const [ecoPoints, setEcoPoints] = useState(0);
+  const [recentTasks, setRecentTasks] = useState([]);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
   const navigate = useNavigate();
+
+
+useEffect(() => {
+  let unsub;
+  const listenUser = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const userRef = doc(db, "users", user.uid);
+      unsub = onSnapshot(userRef, (userSnap) => {
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          setUserName(data.name || user.email);
+          setEcoPoints(data.ecoPoints || 0);
+          setRecentTasks(Array.isArray(data.recentTasks) ? [...data.recentTasks].reverse() : []);
+          setUpcomingTasks(
+            Array.isArray(data.upcomingTasks)
+              ? [...data.upcomingTasks].sort((a, b) => new Date(a.time) - new Date(b.time))
+              : []
+          );
+        }
+      });
+    }
+  };
+  listenUser();
+  return () => unsub && unsub();
+}, []);
 
   return (
     <div className="dashboard-layout">
       {/* Sidebar */}
       <aside className="sidebar">
         <div
-    className="sidebar-logo"
-    style={{ cursor: 'pointer' }}
-    onClick={() => navigate('/')}
-  >
-    <img src="/logo.png" alt="Greenify Logo" className="sidebar-logo-img" />
-  </div>
+          className="sidebar-logo"
+          style={{ cursor: 'pointer' }}
+          onClick={() => navigate('/')}
+        >
+          <img src="/logo.png" alt="Greenify Logo" className="sidebar-logo-img" />
+        </div>
         <nav>
           <ul>
-             <li title="Home" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>🏠</li>
+            <li title="Home" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>🏠</li>
             <li title="Chat">💬</li>
             <li title="Calendar">📅</li>
             <li title="Tasks">🌱</li>
@@ -36,16 +66,16 @@ function Dashboard() {
         {/* Top Profile Section */}
         <div className="dashboard-header">
           <div>
-            <h2>Good Morning, <span className="user-name">Eco Hero</span></h2>
-            <p>75% Eco Tasks Completed</p>
+            <h2>Good Morning, <span className="user-name">{userName || "Eco Hero"}</span></h2>
+            <p>Eco Points: <b>{ecoPoints}</b></p>
           </div>
           <img
-  src="https://ui-avatars.com/api/?name=Eco+Hero&background=43a047&color=fff"
-  alt="User Avatar"
-  className="profile-avatar"
-  style={{ cursor: "pointer" }}
-  onClick={() => navigate('/profile')}
-/>
+            src={`https://ui-avatars.com/api/?name=${encodeURIComponent(userName || "Eco Hero")}&background=43a047&color=fff`}
+            alt="User Avatar"
+            className="profile-avatar"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate('/profile')}
+          />
         </div>
 
         {/* Task Cards */}
@@ -64,100 +94,47 @@ function Dashboard() {
           </div>
         </div>
 
-
-        
-
         <section className="recent-tasks">
-          <h3>Eco Tasks Completed</h3>
-          <div className="tasks-list">
-            {/* Example tasks, you can replace/add more */}
-            <div className="task-row">
-              <span className="task-num one">1</span>
-              <span className="task-title">Recycle Bottles</span>
-              <span className="task-desc">Collected and recycled 5 plastic bottles</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num two">2</span>
-              <span className="task-title">Plant a Tree</span>
-              <span className="task-desc">Planted a sapling in the local park</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num three">3</span>
-              <span className="task-title">Public Transport</span>
-              <span className="task-desc">Used bus instead of car for commute</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num four">4</span>
-              <span className="task-title">Energy Saving</span>
-              <span className="task-desc">Turned off unused lights and devices</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num five">5</span>
-              <span className="task-title">Water Conservation</span>
-              <span className="task-desc">Fixed a leaking tap at home</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num six">6</span>
-              <span className="task-title">Community Clean-Up</span>
-              <span className="task-desc">Joined a local clean-up drive</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num seven">7</span>
-              <span className="task-title">Composting</span>
-              <span className="task-desc">Started composting kitchen waste</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num eight">8</span>
-              <span className="task-title">Eco Shopping</span>
-              <span className="task-desc">Bought eco-friendly products</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num nine">9</span>
-              <span className="task-title">Reusable Bags</span>
-              <span className="task-desc">Used reusable bags for shopping</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-            <div className="task-row">
-              <span className="task-num ten">10</span>
-              <span className="task-title">Bike to Work</span>
-              <span className="task-desc">Cycled to work instead of driving</span>
-              <span className="task-status done">✔️ Done</span>
-            </div>
-          </div>
-        </section>
-
-
+  <h3>Eco Tasks Completed</h3>
+  <div className="tasks-list">
+    {recentTasks.length === 0 && (
+      <div style={{ color: "#888", fontStyle: "italic", padding: "12px" }}>
+        No tasks completed yet.
+      </div>
+    )}
+    {recentTasks.map((task, idx) => (
+      <div className="task-row" key={idx}>
+        <span className="task-num">{recentTasks.length - idx}</span>
+        <span className="task-title">{task.title}</span>
+        <span className="task-desc">{task.desc}</span>
+        <span className="task-status done">+{task.points} pts</span>
+  
+      </div>
+    ))} 
+  </div>
+</section>
       </main>
 
       {/* Right Sidebar */}
       <aside className="rightbar">
-        
-<div className="upcoming-schedule">
+        <div className="upcoming-schedule">
   <h4>Upcoming Eco Schedule</h4>
-  <div
-    className="schedule-card green"
-    style={{ cursor: 'pointer' }}
-    onClick={() => navigate('/event/1')}
-  >
-    <div>Community Clean-Up Drive</div>
-    <div>10:00 AM</div>
-  </div>
-  <div
-    className="schedule-card green"
-    style={{ cursor: 'pointer' }}
-    onClick={() => navigate('/event/2')}
-  >
-    <div>Tree Plantation Event</div>
-    <div>2:30 PM</div>
-  </div>
+  {upcomingTasks.length === 0 ? (
+    <div style={{ color: "#888", fontStyle: "i talic", padding: "12px" }}>
+      No upcoming tasks scheduled.
+    </div>
+  ) : (
+    upcomingTasks.map((task, idx) => (
+      <div
+        key={idx}
+        className="schedule-card green"
+        style={{ cursor: 'pointer', marginBottom: 8 }}
+      >
+        <div>{task.title}</div>
+        <div>{task.time ? new Date(task.time).toLocaleString() : "TBA"}</div>
+      </div>
+    ))
+  )}
 </div>
         <div className="new-task">
           <h4>New Eco Task</h4>
@@ -171,11 +148,11 @@ function Dashboard() {
             <span>Water</span>
           </div>
           <button
-    className="create-task-btn"
-    onClick={() => navigate('/new-eco-task')}
-  >
-    Create Eco Task
-  </button>
+            className="create-task-btn"
+            onClick={() => navigate('/new-eco-task')}
+          >
+            Create Eco Task
+          </button>
         </div>
       </aside>
     </div>
